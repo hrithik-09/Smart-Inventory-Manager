@@ -3,20 +3,19 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    
+  class Supplier extends Model {
     static associate(models) {
-      
+      Supplier.hasMany(models.Product, { foreignKey: 'supplierId' });
     }
   }
-  User.init({
+  Supplier.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.STRING
+    phone: DataTypes.STRING,
+    address: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'User',
+    modelName: 'Supplier',
   });
-  return User;
+  return Supplier;
 };
