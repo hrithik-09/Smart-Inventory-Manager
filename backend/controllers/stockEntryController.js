@@ -3,7 +3,12 @@ const { StockEntry, Product } = require("../models");
 // Create Stock Entry
 exports.createStockEntry = async (req, res) => {
   try {
+    const {productId,quantity} = req.body;
     const stockEntry = await StockEntry.create(req.body);
+    const product = await Product.findByPk(productId);
+    product.quantity+=quantity;
+    await product.save();
+
     res.status(201).json(stockEntry);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -34,12 +39,24 @@ exports.getStockEntryById = async (req, res) => {
 // Update Stock Entry
 exports.updateStockEntry = async (req, res) => {
   try {
-    const [updated] = await StockEntry.update(req.body, {
-      where: { id: req.params.id },
-    });
-    if (!updated) return res.status(404).json({ error: "Stock Entry not found" });
-    const updatedEntry = await StockEntry.findByPk(req.params.id);
-    res.json(updatedEntry);
+    const id =req.params.id;
+    const {productId,quantity} = req.body;
+    const entry = await StockEntry.findByPk(id);
+    if (!entry) {
+      return res.status(404).json({ error: "Stock Entry not found" });
+    }
+     
+    const oldProduct = await Product.findByPk(entry.productId);
+    oldProduct.quantity-=entry.quantity;
+    await oldProduct.save();
+
+    const newProduct = await Product.findByPk(productId)
+    newProduct.quantity+=quantity;
+    await newProduct.save();
+
+    await entry.update(req.body);
+
+    res.json(entry);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -48,8 +65,18 @@ exports.updateStockEntry = async (req, res) => {
 // Delete Stock Entry
 exports.deleteStockEntry = async (req, res) => {
   try {
-    const deleted = await StockEntry.destroy({ where: { id: req.params.id } });
-    if (!deleted) return res.status(404).json({ error: "Stock Entry not found" });
+    const id = req.params.id;
+    const entry = await StockEntry.findByPk(id);
+    if (!entry) {
+      return res.status(404).json({ error: "Stock Entry not found" });
+    }
+     
+    const oldProduct = await Product.findByPk(entry.productId);
+    oldProduct.quantity-=entry.quantity;
+    await oldProduct.save();
+
+    await entry.destroy();
+
     res.json({ message: "Stock Entry deleted" });
   } catch (err) {
     res.status(500).json({ error: err.message });
