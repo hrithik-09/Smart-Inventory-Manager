@@ -3,6 +3,9 @@ package com.rkdigital.stocklytics
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.os.Handler
+import android.os.Looper
+import android.content.Intent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,5 +22,9 @@ class Splash : AppCompatActivity() {
             glow.animate().alpha(0.3f).duration = 1000
         }
         logo.startAnimation(glowAnimation)
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, Login::class.java))
+            finish()
+        }, 2000)
     }
 }

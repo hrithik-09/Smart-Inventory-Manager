@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#121212"
+    tools:context=".Login"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="32dp">
+
+        <!-- Logo with subtle glow -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_logo"
+            android:layout_marginTop="40dp"
+            android:contentDescription="Stocklytics Logo"
+            android:elevation="8dp"/>
+
+        <!-- App Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stocklytics"
+            android:textColor="#C8FD00"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:letterSpacing="0.03"/>
+
+        <!-- Tagline -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inventory Management"
+            android:textColor="#AAAAAA"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Login Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:cardBackgroundColor="#1E1E1E"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Email Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxBackgroundColor="#2B2B2B"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:hintTextColor="#AAAAAA"
+                    app:boxStrokeColor="#C8FD00"
+                    app:boxStrokeWidth="1dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#AAAAAA"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Password Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxBackgroundColor="#2B2B2B"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:hintTextColor="#AAAAAA"
+                    app:boxStrokeColor="#C8FD00"
+                    app:boxStrokeWidth="1dp"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="#C8FD00">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#AAAAAA"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Forgot Password -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot Password?"
+                    android:textColor="#C8FD00"
+                    android:textSize="12sp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="4dp"/>
+
+                <!-- Login Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="LOGIN"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="#C8FD00"
+                    android:textColor="#121212"
+                    app:cornerRadius="24dp"
+                    android:elevation="2dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#333333"
+            android:layout_marginTop="32dp"/>
+
+        <!-- Register Option -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+            android:textColor="#AAAAAA"
+            android:layout_marginTop="24dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="CREATE ACCOUNT"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="#C8FD00"
+            app:strokeColor="#C8FD00"
+            app:strokeWidth="1dp"
+            app:cornerRadius="24dp"/>
+
+    </LinearLayout>
+</ScrollView>
