@@ -9,8 +9,9 @@ const supplierRoutes = require("./routes/supplierRoutes");
 const stockExitRoutes = require("./routes/stockExitRoutes");
 const authRoutes = require('./routes/authRoutes');
 const authenticateToken = require('./middleware/authMiddleware');
-const cors = require('cors');
+
 app.use(express.json());
+app.use(cors());
 app.use('/api/auth', authRoutes);
 app.use(authenticateToken);
 
