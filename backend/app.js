@@ -13,9 +13,9 @@ const authenticateToken = require('./middleware/authMiddleware');
 app.use(express.json());
 app.use(cors());
 app.use('/api/auth', authRoutes);
+app.use("/api/users", userRoutes);
 app.use(authenticateToken);
 
-app.use("/api/users", userRoutes);
 app.use("/api/products",productRoutes);
 app.use("/api/categories",categoryRoutes);
 app.use("/api/stockEntries",stockEntryRoutes);

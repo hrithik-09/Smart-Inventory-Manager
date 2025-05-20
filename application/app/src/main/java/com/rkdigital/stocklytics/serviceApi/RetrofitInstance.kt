@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://localhost:5000/api/"
+    private const val BASE_URL = "https://smart-inventory-manager.onrender.com/api/"
 
     val apiService: RetrofitApiService by lazy {
         Retrofit.Builder()
