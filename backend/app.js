@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
@@ -7,7 +8,8 @@ const stockEntryRoutes = require("./routes/stockEntryRoutes");
 const supplierRoutes = require("./routes/supplierRoutes");
 const stockExitRoutes = require("./routes/stockExitRoutes");
 const authRoutes = require('./routes/authRoutes');
-const authenticateToken = require('./middlewares/authMiddleware');
+const authenticateToken = require('./middleware/authMiddleware');
+const cors = require('cors');
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use(authenticateToken);
