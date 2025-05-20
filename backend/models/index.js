@@ -1,4 +1,3 @@
-
 'use strict';
 
 const fs = require('fs');
@@ -37,21 +36,6 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
-
-// Associations
-// const { User, Product, Category, Supplier, StockEntry, StockExit } = db;
-
-// Category.hasMany(Product);
-// Product.belongsTo(Category);
-
-// Supplier.hasMany(Product);
-// Product.belongsTo(Supplier);
-
-// Product.hasMany(StockEntry);
-// StockEntry.belongsTo(Product);
-
-// Product.hasMany(StockExit);
-// StockExit.belongsTo(Product);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
