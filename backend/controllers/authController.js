@@ -38,3 +38,13 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// GET /api/auth/validate
+exports.validateToken = async (req, res) => {
+  try {
+    res.status(200).json({ message: 'Token is valid' });
+  } catch (err) {
+    res.status(401).json({ error: 'Invalid token' });
+  }
+};
+
