@@ -13,8 +13,7 @@ const generateToken = (user) => {
 exports.signup = async (req, res) => {
   try {
     const user = await User.create(req.body); 
-    const token = generateToken(user);
-    res.status(201).json({ token, user });
+     res.status(201).json({ success: true, message: 'User created successfully'});
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

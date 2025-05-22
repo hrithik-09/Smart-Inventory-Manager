@@ -30,6 +30,9 @@ class Login : AppCompatActivity() {
         val factory = LoginViewModelFactory(authRepository)
 
         loginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
+        binding.createAccount.setOnClickListener {
+            startActivity(Intent(this, Register::class.java))
+        }
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()

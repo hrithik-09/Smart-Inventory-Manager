@@ -12,8 +12,14 @@ class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
 
     private val _loginResponse = MutableLiveData<Result<LoginResponse>>();
     val loginResponse : LiveData<Result<LoginResponse>> = _loginResponse
+
+    private val _registerResponse = MutableLiveData<Result<Unit>>()
+    val registerResponse: LiveData<Result<Unit>> = _registerResponse
+
     private val _tokenValidationResult = MutableLiveData<Result<Unit>>()
     val tokenValidationResult: LiveData<Result<Unit>> get() = _tokenValidationResult
+
+
     fun login (email:String ,password:String){
         viewModelScope.launch {
             try {
@@ -29,11 +35,18 @@ class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
             }
         }
     }
-
+    fun register(name: String, email: String, password: String, role: String) {
+        viewModelScope.launch {
+            val result = authRepository.register(name, email, password, role)
+            _registerResponse.postValue(result)
+        }
+    }
     fun validateToken(token: String) {
         viewModelScope.launch {
             val result = authRepository.validateToken(token)
             _tokenValidationResult.postValue(result)
         }
     }
+
+
 }
