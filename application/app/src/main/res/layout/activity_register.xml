@@ -177,7 +177,12 @@
                         android:hint="Select Role"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#AAAAAA"
-                        android:inputType="none"/>
+                        android:inputType="none"
+                        android:popupBackground="#2B2B2B"
+                        android:dropDownVerticalOffset="4dp"
+                        android:dropDownWidth="wrap_content"
+                        android:popupTheme="@style/DropdownPopupTheme"
+                        android:theme="@style/DropdownPopupTheme"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Terms Checkbox -->

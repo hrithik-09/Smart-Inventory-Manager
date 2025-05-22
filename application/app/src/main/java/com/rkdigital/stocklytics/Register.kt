@@ -37,11 +37,6 @@ class Register : AppCompatActivity() {
             val password = binding.etPassword.text.toString()
             val confirmPassword = binding.etConfirmPassword.text.toString()
             val role = binding.etRole.text.toString().lowercase()
-            println(name)
-            println(confirmPassword)
-            println(role)
-            println(password)
-            println(email)
             if (password != confirmPassword) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -59,7 +54,7 @@ class Register : AppCompatActivity() {
                 Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
                 finish()
             }.onFailure {
-                Toast.makeText(this, "Registration failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()
             }
         }
 

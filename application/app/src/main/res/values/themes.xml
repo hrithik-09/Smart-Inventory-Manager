@@ -8,11 +8,12 @@
     </style>
 
     <style name="Theme.Stocklytics" parent="Base.Theme.Stocklytics" />
-<!--    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
-<!--        &lt;!&ndash; Your other theme attributes &ndash;&gt;-->
-<!--    </style>-->
-<!--    <style name="DropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">-->
-<!--        <item name="boxStrokeColor">@color/green_accent</item>-->
-<!--        <item name="hintTextColor">@color/hint_color</item>-->
-<!--    </style>-->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+    </style>
+    <style name="DropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/green_accent</item>
+        <item name="hintTextColor">@color/hint_color</item>
+
+    </style>
 </resources>
