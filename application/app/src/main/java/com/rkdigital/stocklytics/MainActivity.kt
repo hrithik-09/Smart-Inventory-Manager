@@ -16,6 +16,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.chip.Chip
 import com.rkdigital.stocklytics.databinding.ActivityMainBinding
 import com.rkdigital.stocklytics.storage.SharedPreferenceHelper
@@ -26,12 +27,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupToolbarAndDrawer()
         setupNavigationDrawer()
         loadUserDetailsToDrawer()
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, dashboard())
+                .commit()
+            binding.navigationView.setCheckedItem(R.id.nav_dashboard)
+        }
 
     }
     private fun setupToolbarAndDrawer() {
@@ -89,8 +97,11 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_dashboard -> {
-                    showToast("Dashboard")
-                    // loadFragment(DashboardFragment())
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, dashboard())
+                        .commit()
+                    binding.drawerLayout.closeDrawers()
+                    true
                 }
                 R.id.nav_products -> {
                     showToast("Products")
@@ -189,3 +200,5 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }
+
+
