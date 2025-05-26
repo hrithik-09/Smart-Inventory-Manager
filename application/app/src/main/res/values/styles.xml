@@ -51,4 +51,24 @@
     <style name="StatCardStyle.Success" parent="StatCardStyle">
         <item name="strokeColor">#4CAF50</item>
     </style>
+
+    <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">#121212</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorSecondary">#AAAAAA</item>
+        <item name="android:colorBackground">#121212</item>
+        <item name="android:background">#121212</item>
+    </style>
+
+    <style name="PopupMenuOverlay" parent="ThemeOverlay.MaterialComponents.Dark">
+        <item name="popupMenuStyle">@style/PopupMenuStyle</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorSecondary">#AAAAAA</item>
+    </style>
+
+
+
+
+
+
 </resources>

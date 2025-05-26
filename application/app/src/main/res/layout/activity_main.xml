@@ -21,6 +21,8 @@
             android:background="#121212"
             app:titleTextColor="#C8FD00"
             app:menu="@menu/admin_menu"
+            app:navigationIconTint="#C8FD00"
+            app:popupTheme="@style/PopupMenuOverlay"
             app:navigationIcon="@drawable/ic_menu"/>
 
         <!-- Dashboard Content -->

@@ -6,11 +6,14 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import android.content.Intent
+import android.graphics.Color
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.chip.Chip
@@ -36,21 +39,50 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
 
+        binding.toolbar.popupTheme = R.style.PopupMenuOverlay
+
         drawerToggle = ActionBarDrawerToggle(
             this,
             binding.drawerLayout,
             binding.toolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
+
         ).apply {
             isDrawerIndicatorEnabled = true
         }
 
+        val color = ContextCompat.getColor(this, R.color.green_accent) // or use "#C8FD00"
+        binding.toolbar.overflowIcon?.setTint(color)
+        val navIcon = AppCompatResources.getDrawable(this, R.drawable.ic_menu)?.apply {
+            setTint(color)
+        }
+        binding.toolbar.navigationIcon = navIcon
+
         binding.drawerLayout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
+
+    }
+    override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
+        if (menu.javaClass.simpleName == "MenuBuilder") {
+            try {
+                val m = menu.javaClass.getDeclaredMethod("setOptionalIconsVisible", Boolean::class.javaPrimitiveType)
+                m.isAccessible = true
+                m.invoke(menu, true)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        return super.onMenuOpened(featureId, menu)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.admin_menu, menu)
+        for (i in 0 until menu.size()) {
+            val item = menu.getItem(i)
+            val icon = item.icon
+            icon?.mutate()?.setTint(ContextCompat.getColor(this, R.color.green_accent))
+            item.icon = icon
+        }
         return true
     }
     private fun setupNavigationDrawer() {
